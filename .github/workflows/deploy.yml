@@ -43,7 +43,7 @@ jobs:
           port: ${{ secrets.VPS_PORT }}
           script: |
             cd /var/www/html/tugas-iot
-            git pull origin main
+            ssh-agent bash -c 'ssh-add ~/.ssh/cicd; git pull'
       - name: Update deployment Status (success)
         if: success()
         uses: chrnorm/deployment-status@v2
